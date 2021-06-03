@@ -10,22 +10,35 @@ POST http://localhost:3000/categories
 Content-Type: application/json
 
 {
-    "name": "Women",
+    "name": "Men",
     "sub_category": [{
-        "Clothing":{
-            "Dresses":[
-                "Casual dresses", 
-                "Party dresses"
+        "Footwear":
+            [
+                "Branded",
+                "Non-branded"
             ]
-        },
+        ,
         "T-Shirts":[
             "Printed T-Shirts", 
             "Casual T-Shirts", 
             "Plain T-Shirts"
+            ],
+        "Shirts":[
+            "Party Shirts", 
+            "Casual Shirts", 
+            "Plain Shirts"
             ]
         }
     ]
 }
 
 ###
-DELETE http://localhost:3000/categories/60b8dae3c7fa710c10a16a62
+DELETE http://localhost:3000/categories/60b8cfac4e33a9061c172916
+
+###
+PATCH http://localhost:3000/categories/60b8cf2c4e33a5061c172915
+Content-Type: application/json
+
+{
+    "name":"Women"
+}

@@ -29,8 +29,19 @@ router.post('/', async (req, res) => {
     }
 })
 // Updating one
-router.patch('/:id', getCategories, (req, res) => {
-
+router.patch('/:id', getCategories, async (req, res) => {
+    if (req.body.name != null) {
+        res.categories.name = req.body.name
+    }
+    if (req.body.sub_category != null) {
+        res.categories.sub_category = req.body.sub_category
+    }
+    try {
+        const updatedCategory = await res.categories.save()
+        res.json(updatedCategory)
+    } catch (err) {
+        res.status(400).json({ message: err.message })
+    }
 })
 // Deleting one
 router.delete('/:id', getCategories, async (req, res) => {

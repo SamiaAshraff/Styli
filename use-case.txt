@@ -1,5 +1,8 @@
 USE CASES:
 
+Please ensure to install REST Client extension in order to run route.rest file which contains all the requests.
+
+***************************************************************
 1. CREATE A CATEGORY
 
 400 BAD_REQUEST 
@@ -87,6 +90,7 @@ HTTP/1.1 201 Created
   "__v": 0
 }
 
+***************************************************************
 2. DELETE A CATEGORY
 
 DELETE http://localhost:3000/categories/60b8d0b04e33a9061c172918
@@ -109,5 +113,145 @@ HTTP/1.1 404 Not Found
   "message": "Cannot find subscriber"
 }
 
+***************************************************************
 3. UPDATE a Category
 
+Before the request:
+HTTP/1.1 200 OK
+.
+.
+.
+{
+  "sub_category": [
+    {
+      "Clothing": {
+        "Dresses": [
+          "Casual dresses",
+          "Party dresses"
+        ]
+      },
+      "T-Shirts": [
+        "Printed T-Shirts",
+        "Casual T-Shirts",
+        "Plain T-Shirts"
+      ]
+    }
+  ],
+  "_id": "60b8cf2c4e33a9061c172915",
+  "name": "Women",
+  "date_created": "1622724396670",
+  "__v": 0
+}
+
+After passing the below request:
+PATCH http://localhost:3000/categories/60b8cf2c4e33a9061c172915
+Content-Type: application/json
+
+{
+    "name":"Men"
+}
+
+Output:
+
+HTTP/1.1 200 OK
+.
+.
+.
+{
+  "sub_category": [
+    {
+      "Clothing": {
+        "Dresses": [
+          "Casual dresses",
+          "Party dresses"
+        ]
+      },
+      "T-Shirts": [
+        "Printed T-Shirts",
+        "Casual T-Shirts",
+        "Plain T-Shirts"
+      ]
+    }
+  ],
+  "_id": "60b8cf2c4e33a9061c172915",
+  "name": "Men",
+  "date_created": "1622724396670",
+  "__v": 0
+}
+
+PATCH request with incorrect id:
+
+PATCH http://localhost:3000/categories/60b8cf2c4e33a5061c172915
+Content-Type: application/json
+
+{
+    "name":"Women"
+}
+
+HTTP/1.1 404 Not Found
+.
+.
+{
+  "message": "Cannot find subscriber"
+}
+
+***************************************************************
+FINAL GET CATEGORIES REQUEST PRODUCES:
+
+1. 200 OK
+
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 505
+ETag: W/"1f9-Il5wT1liEwdNaF0B8ukl1SvPb7E"
+Date: Thu, 03 Jun 2021 14:00:06 GMT
+Connection: close
+
+[
+  {
+    "sub_category": [
+      {
+        "Clothing": {
+          "Dresses": [
+            "Casual dresses",
+            "Party dresses"
+          ]
+        },
+        "T-Shirts": [
+          "Semi-casual T-Shirts",
+          "Casual T-Shirts",
+          "Plain T-Shirts"
+        ]
+      }
+    ],
+    "_id": "60b8cf2c4e33a9061c172915",
+    "name": "Women",
+    "date_created": "1622724396670",
+    "__v": 1
+  },
+  {
+    "sub_category": [
+      {
+        "Footwear": [
+          "Branded",
+          "Non-branded"
+        ],
+        "T-Shirts": [
+          "Printed T-Shirts",
+          "Casual T-Shirts",
+          "Plain T-Shirts"
+        ],
+        "Shirts": [
+          "Party Shirts",
+          "Casual Shirts",
+          "Plain Shirts"
+        ]
+      }
+    ],
+    "_id": "60b8e05de765ec32b816e173",
+    "name": "Men",
+    "date_created": "1622728797631",
+    "__v": 0
+  }
+]
