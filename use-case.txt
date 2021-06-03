@@ -1,0 +1,91 @@
+USE CASES:
+
+1. CREATE A CATEGORY
+
+400 BAD_REQUEST 
+Category created without "name"
+
+POST http://localhost:3000/categories
+Content-Type: application/json
+
+{
+    
+    "sub_category": [{
+        "Clothing":{
+            "Dresses":[
+                "Casual dresses", 
+                "Party dresses"
+            ]
+        },
+        "T-Shirts":[
+            "Printed T-Shirts", 
+            "Casual T-Shirts", 
+            "Plain T-Shirts"
+            ]
+        }
+    ]
+}
+
+OUTPUT:
+
+HTTP/1.1 400 Bad Request
+.
+.
+.
+{
+  "message": "Categories validation failed: name: Path `name` is required."
+}
+
+201 CREATED
+
+POST http://localhost:3000/categories
+Content-Type: application/json
+
+{
+    "name": "Women",
+    "sub_category": [{
+        "Clothing":{
+            "Dresses":[
+                "Casual dresses", 
+                "Party dresses"
+            ]
+        },
+        "T-Shirts":[
+            "Printed T-Shirts", 
+            "Casual T-Shirts", 
+            "Plain T-Shirts"
+            ]
+        }
+    ]
+}
+
+OUTPUT:
+
+HTTP/1.1 201 Created
+.
+.
+.
+{
+  "sub_category": [
+    {
+      "Clothing": {
+        "Dresses": [
+          "Casual dresses",
+          "Party dresses"
+        ]
+      },
+      "T-Shirts": [
+        "Printed T-Shirts",
+        "Casual T-Shirts",
+        "Plain T-Shirts"
+      ]
+    }
+  ],
+  "_id": "60b8d0b04e33a9061c172918",
+  "name": "Women",
+  "date_created": "1622724784092",
+  "__v": 0
+}
+
+2. UPDATE A CATEGORY
+

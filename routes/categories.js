@@ -12,8 +12,8 @@ router.get('/', async (req, res) => {
     }
 })
 // Getting one
-router.get('/:id', (req, res) => {
-    res.send(req.params.id)
+router.get('/:id', getCategories, (req, res) => {
+    res.json(res.categories)
 })
 // Creating one
 router.post('/', async (req, res) => {
@@ -29,11 +29,27 @@ router.post('/', async (req, res) => {
     }
 })
 // Updating one
-router.patch('/:id', (req, res) => {
+router.patch('/:id', getCategories, (req, res) => {
 
 })
 // Deleting one
-router.delete('/', (req, res) => {
+router.delete('/', getCategories, (req, res) => {
 
 })
+
+// middleware function
+async function getCategories(req, res, next) {
+    let categories
+    try {
+        categories = await Categories.findById(req.params.id)
+        if (categories == null) {
+            return res.status(404).json({ message: 'Cannot find subscriber' })
+
+        }
+    } catch (err) {
+        return res.status(500).json({ message: err.message })
+    }
+    res.categories = categories
+    next()
+}
 module.exports = router
