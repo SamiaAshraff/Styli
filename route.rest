@@ -1,1 +1,28 @@
 GET http://localhost:3000/categories
+
+###
+
+GET http://localhost:3000/categories/12
+
+###
+
+POST http://localhost:3000/categories
+Content-Type: application/json
+
+{
+    "name": "Women",
+    "sub_category": [{
+        "Clothing":{
+            "Dresses":[
+                "Casual dresses", 
+                "Party dresses"
+            ]
+        },
+        "T-Shirts":[
+            "Printed T-Shirts", 
+            "Casual T-Shirts", 
+            "Plain T-Shirts"
+            ]
+        }
+    ]
+}
