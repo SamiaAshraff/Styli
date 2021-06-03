@@ -33,8 +33,13 @@ router.patch('/:id', getCategories, (req, res) => {
 
 })
 // Deleting one
-router.delete('/', getCategories, (req, res) => {
-
+router.delete('/:id', getCategories, async (req, res) => {
+    try {
+        await res.categories.remove()
+        res.json({ message: 'Deleted Category' })
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
 })
 
 // middleware function

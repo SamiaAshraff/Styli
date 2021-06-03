@@ -87,5 +87,27 @@ HTTP/1.1 201 Created
   "__v": 0
 }
 
-2. UPDATE A CATEGORY
+2. DELETE A CATEGORY
+
+DELETE http://localhost:3000/categories/60b8d0b04e33a9061c172918
+
+HTTP/1.1 200 OK
+.
+.
+.
+{
+  "message": "Deleted Category"
+}
+
+Upon further deletion,
+
+HTTP/1.1 404 Not Found
+.
+.
+.
+{
+  "message": "Cannot find subscriber"
+}
+
+3. UPDATE a Category
 
