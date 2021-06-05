@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppServiceService } from './app-service.service';
+import { Category } from './category.model';
 
 @Component({
   selector: 'app-root',
@@ -8,21 +9,16 @@ import { AppServiceService } from './app-service.service';
 })
 // making an AppComponent when the app gets initialized
 export class AppComponent implements OnInit {
-  title = 'angular-project-frontend';
+  // strict property initialization
+  categs$!: Category[];
+
   constructor(private service: AppServiceService) {
 
   }
 
   ngOnInit() {
-    this.getDataFromAPI();
+    return this.service.getData().subscribe((response) => this.categs$ = response);
   }
 
-  // subscribes to service call and displays appropriate messages
-  getDataFromAPI() {
-    this.service.getData().subscribe((response) => {
-      console.log('Response from API is', response)
-    }, (error) => {
-      console.log('Error is', error);
-    })
-  }
+
 }
