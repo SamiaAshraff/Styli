@@ -10,6 +10,6 @@ export class AppServiceService {
 
   // method to get data from the API
   getData() {
-    return this.http.get('/api/getData')
+    return this.http.get('/api/categories')
   }
 }

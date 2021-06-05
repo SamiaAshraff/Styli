@@ -1,3 +1,12 @@
+# In order to run the app, 
+
+ng serve --proxy-config proxy.conf.json
+
+# proxy.conf.json
+
+Creating proxy configuration to tell the angular app to redirect to 3000 port 
+where our custom API resides.
+
 # AngularProjectFrontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.3.
