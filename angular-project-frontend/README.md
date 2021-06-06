@@ -1,5 +1,9 @@
 # In order to run the app, 
 
+Termina1:
+ng run devStart 
+
+Terminal 2:
 ng serve --proxy-config proxy.conf.json
 
 # proxy.conf.json
