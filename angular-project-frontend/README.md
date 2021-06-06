@@ -1,9 +1,11 @@
 # In order to run the app, 
 
-Termina1:
+Terminal1:
+(to run node.js)
 ng run devStart 
 
 Terminal 2:
+(to run angular)
 ng serve --proxy-config proxy.conf.json
 
 # proxy.conf.json

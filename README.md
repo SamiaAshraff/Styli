@@ -1,3 +1,13 @@
+# In order to run the app, 
+
+Terminal1:
+(to run node.js)
+ng run devStart 
+
+Terminal 2:
+(to run angular)
+ng serve --proxy-config proxy.conf.json
+
 # Context
 
 Built an application to manage E-Commerce Fashion categories in a tree structure
